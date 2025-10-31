@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start Homebox service
+# ==============================================================================
+
+bashio::log.info "Starting Homebox..."
+
+# Execute Homebox API with the config file
+exec /app/api /data/config.yml
+

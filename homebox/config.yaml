@@ -3,7 +3,7 @@ name: Homebox Addon
 version: "2.2.0"
 slug: homebox
 description: Homebox add-on
-url: "https://github.com/sysadminsmedia/homebox-addon/blob/main/example"
+url: "https://github.com/Oddiesea/homebox-ha-addon"
 arch:
   # - armhf
   # - armv7
@@ -12,6 +12,9 @@ arch:
   # - i386
 map:
   - share:rw
-image: "ghcr.io/sysadminsmedia/homebox-ha-addon"
+image: "ghcr.io/Oddiesea/homebox-ha-addon"
+ingress: true
+ingress_port: 7745
+# Ports are kept for backwards compatibility but ingress is preferred
 ports:
   7745/tcp: 7745

@@ -2,8 +2,10 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-LABEL org.opencontainers.image.source=https://github.com/sysadminsmedia/homebox-ha-addon
-#comment
-# Execute during the build of the image
-ENTRYPOINT [ "/app/api" ]
-CMD [ "/data/config.yml" ]
+LABEL org.opencontainers.image.source=https://github.com/Oddiesea/homebox-ha-addon
+
+# Copy service scripts
+COPY rootfs/ /
+
+# Make service scripts executable
+RUN chmod +x /etc/services.d/homebox/run /etc/services.d/homebox/finish || true
