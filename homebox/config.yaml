@@ -13,6 +13,7 @@ arch:
 map:
   - share:rw
 image: "ghcr.io/Oddiesea/homebox-ha-addon@sha256:20bb37b46df5536765bdac6652030562a524ec3b72033909955818a27c436cee"
+init: false
 ingress: true
 ingress_port: 7745
 # Ports are kept for backwards compatibility but ingress is preferred
