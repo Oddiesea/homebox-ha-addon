@@ -12,7 +12,7 @@ arch:
   # - i386
 map:
   - share:rw
-image: "ghcr.io/Oddiesea/homebox-ha-addon@sha256:20bb37b46df5536765bdac6652030562a524ec3b72033909955818a27c436cee"
+image: "ghcr.io/Oddiesea/homebox-ha-addon"
 init: false
 ingress: true
 ingress_port: 7745
