@@ -38,14 +38,15 @@ jobs:
           # For workflow_dispatch (manual trigger), build all addons
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "Manual trigger detected, building all addons";
-            all_addons=$(echo '${{ steps.addons.outputs.addons }}' | jq -r '.[]' | tr '\n' ' ')
-            echo "All addons: $all_addons";
+            echo "All addons found: ${{ steps.addons.outputs.addons_list }}";
             echo "changed=true" >> $GITHUB_OUTPUT;
-            echo "addons=${{ steps.addons.outputs.addons }}" >> $GITHUB_OUTPUT;
+            # Use addons_list which is already a JSON array
+            echo "addons=${{ steps.addons.outputs.addons_list }}" >> $GITHUB_OUTPUT;
           else
             # For push/PR, only build changed addons
             declare -a changed_addons
-            for addon in ${{ steps.addons.outputs.addons }}; do
+            # Parse the JSON array from addons_list
+            for addon in $(echo '${{ steps.addons.outputs.addons_list }}' | jq -r '.[]'); do
               if [[ "${{ steps.changed_files.outputs.all }}" =~ $addon ]]; then
                 for file in ${{ env.MONITORED_FILES }}; do
                     if [[ "${{ steps.changed_files.outputs.all }}" =~ $addon/$file ]]; then
