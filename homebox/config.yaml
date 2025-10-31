@@ -2,7 +2,7 @@
 name: Homebox Addon
 version: "2.2.0"
 slug: homebox
-description: Homebox add-on
+description: Homebox inventory management add-on
 url: "https://github.com/Oddiesea/homebox-ha-addon"
 arch:
   # - armhf
